@@ -2,6 +2,7 @@ import express from "express"
 import mongoose from "mongoose"
 import dotenv from "dotenv"
 import cors from "cors"
+import Document from "./schema.js"
 dotenv.config()
 
 const app = express()
