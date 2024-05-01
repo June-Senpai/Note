@@ -5,15 +5,13 @@ const HomePage = () => {
 
   const handleCreateDoc = () => {
     axios
-      .get(`${import.meta.env.VITE_BACKEND_URL_PROD}/create`)
+      .get(`${import.meta.env.VITE_BACKEND_URL_PROD}/createDocumentID`)
       .then((response) => {
         const docId = response.data.docId;
-        console.log("Document ID:", docId);
         navigator(`/${docId}`);
       })
       .catch((error) => console.log(error));
   };
-  console.log({ hi: import.meta.env.VITE_BACKEND_URL_PROD });
   return (
     <div className="flex h-screen flex-col items-center justify-center gap-12 bg-red-500">
       Homepage

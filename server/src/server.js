@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
   res.send("Hello World!")
 })
 
-app.get("/create", (req, res) => {
+app.get("/createDocumentID", (req, res) => {
   try {
     const docId = uuidv4()
     res.send({ docId })
