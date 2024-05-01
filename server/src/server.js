@@ -3,6 +3,7 @@ import mongoose from "mongoose"
 import dotenv from "dotenv"
 import cors from "cors"
 import Document from "./schema.js"
+import { v4 as uuidv4 } from "uuid"
 dotenv.config()
 
 const app = express()
@@ -16,6 +17,16 @@ const port = 3000
 
 app.get("/", (req, res) => {
   res.send("Hello World!")
+})
+
+app.post("/create", (req, res) => {
+  try {
+    const docId = uuidv4()
+    res.send({ docId })
+  } catch (error) {
+    console.log(error)
+    res.sendStatus(501)
+  }
 })
 
 app.listen(port, () => {
