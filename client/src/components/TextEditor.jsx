@@ -4,42 +4,25 @@ import Delta from "quill-delta";
 import { debounce } from "../utils/utils";
 import Quill from "quill";
 import { useCallback, useEffect, useState } from "react";
+
 const TextEditor = () => {
   const [docData, setDocData] = useState();
+
   useEffect(() => {
     axios
-      .get(
-        `${import.meta.env.VITE_BACKEND_URL_PROD}${window.location.pathname}`,
-      )
-      .then((data) => {
-        // if it's a newly created document, then return without setting previous data
-        if (data?.msg === "Created") {
+      .get(`${import.meta.env.VITE_BACKEND_URL}${window.location.pathname}`)
+      .then((res) => {
+        if (res?.data?.msg === "Created") {
           return;
         }
-        setDocData(data);
+        setDocData(res?.data);
       });
   }, []);
 
-  // useEffect(() => {
-  //   fetch(`${import.meta.env.VITE_BACKEND_URL}${window.location.pathname}`)
-  //     .then((res) => res?.json())
-  //     .then((data) => {
-  //       // if it's a newly created document, then return without setting previous data
-  //       if (data?.msg === "Created") {
-  //         return;
-  //       }
-  //       setDocData(data);
-  //     });
-  // }, []);
-
   const onUpdateDoc = async (delta, oldDelta, source) => {
     await axios.post(
-      `${import.meta.env.VITE_BACKEND_URL_PROD}${window.location.pathname}`,
-      {
-        delta,
-        oldDelta,
-        source,
-      },
+      `${import.meta.env.VITE_BACKEND_URL}${window.location.pathname}`,
+      { delta, oldDelta, source },
     );
   };
 
