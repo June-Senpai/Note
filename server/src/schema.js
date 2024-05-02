@@ -1,6 +1,7 @@
 import { Schema, model } from "mongoose"
 
 const documentSchema = new Schema({
+  _id: String,
   name: String,
   data: Object,
 })
