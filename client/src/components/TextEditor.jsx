@@ -81,7 +81,7 @@ const TextEditor = () => {
   );
 
   return (
-    <main className="space-y-4 dark:bg-[#323335] dark:text-white ">
+    <main className="mb-2 space-y-4 pb-4 dark:bg-[#323335] dark:text-white">
       <section className="mx-6 flex flex-col items-center justify-between gap-4 pt-2 sm:flex-row">
         <div className="flex flex-col items-center gap-4 sm:flex-row">
           <label className="cursor-pointer" htmlFor="docName">
