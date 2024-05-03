@@ -69,14 +69,14 @@ const HomePage = () => {
       </button>
       <section className="flex w-full flex-col items-center">
         <iframe
-          width="80%"
-          height="400"
+          width="1200px"
+          height="600px"
           src="https://www.youtube.com/embed/dQw4w9WgXcQ?si=Ol2Q_1QYB8JLxXs-"
           title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerPolicy="strict-origin-when-cross-origin"
           allowfullscreen
-          className="rounded-lg"
+          className="h-72 w-72 rounded-lg lg:h-[800px] lg:w-[70%] "
         ></iframe>
         <h3 className="mt-4 text-center text-2xl dark:text-white">
           How it works
