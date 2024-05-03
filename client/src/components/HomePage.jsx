@@ -22,13 +22,20 @@ const HomePage = () => {
         setDocData(res.data?.docData);
       })
       .catch((error) => console.log(error));
-    // fetch(`${import.meta.env.VITE_BACKEND_URL}/`)
-    //   .then((res) => res.json())
-    //   .then((data) => {
-    //     //docData contains docId and docName
-    //     setDocData(data?.docData);
-    //   });
   }, []);
+
+  const onDeleteDoc = (docId) => {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/${docId}/delete`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        // acknowledged is true if doc is deleted
+        if (data?.acknowledged) {
+          setDocData(docData.filter((doc) => doc.docId !== docId));
+        }
+      });
+  };
 
   console.log(docData);
   return (
@@ -38,8 +45,10 @@ const HomePage = () => {
         Create
       </button>
       {docData?.map((doc) => (
-        <div key={doc.docId} onClick={() => navigator(`${doc.docId}`)}>
+        <div key={doc.docId}>
           {doc.docName}
+          <span onClick={() => navigator(`${doc.docId}`)}> open</span>
+          <span onClick={() => onDeleteDoc(doc.docId)}> delete</span>
         </div>
       ))}
     </div>
