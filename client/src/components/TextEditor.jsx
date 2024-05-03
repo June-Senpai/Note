@@ -81,8 +81,8 @@ const TextEditor = () => {
   );
 
   return (
-    <main className="space-y-4 ">
-      <section className="mx-6 mt-2 flex flex-col items-center justify-between gap-4 sm:flex-row">
+    <main className="space-y-4 dark:bg-[#323335] dark:text-white ">
+      <section className="mx-6 flex flex-col items-center justify-between gap-4 pt-2 sm:flex-row">
         <div className="flex flex-col items-center gap-4 sm:flex-row">
           <label className="cursor-pointer" htmlFor="docName">
             {" "}
@@ -94,7 +94,7 @@ const TextEditor = () => {
             value={docName}
             onChange={(e) => setDocName(e.target.value)}
             onBlur={() => onRenameDoc(docName)}
-            className="ml-2 h-10 w-36 rounded-lg border-2 p-2"
+            className="text-primary ml-2 h-10 w-36 rounded-lg border-2 p-2 focus:outline-none"
           />
         </div>
         <Delete onDeleteDoc={onDeleteDoc} />
@@ -111,7 +111,7 @@ const Delete = ({ onDeleteDoc }) => {
     <div className="group relative">
       <button
         onClick={onDeleteDoc}
-        className=" text-red-500 transition-opacity duration-300 hover:opacity-70"
+        className=" text-primary transition-opacity duration-300 hover:opacity-70"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -128,7 +128,7 @@ const Delete = ({ onDeleteDoc }) => {
           />
         </svg>
       </button>
-      <div className="invisible absolute -right-4 z-50 rounded-lg border-2 bg-white p-1 shadow-sm transition-[visibility] duration-500 ease-in group-hover:visible">
+      <div className="dark:text-primary invisible absolute -right-4 z-50 rounded-lg border-2 bg-white p-1 shadow-sm transition-[visibility] duration-500 ease-in group-hover:visible">
         Delete
       </div>
     </div>

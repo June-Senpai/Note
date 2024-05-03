@@ -5,6 +5,7 @@
   height: 1200px;
   background-color: white;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  border-radius: 10px;
 }
 
 .ql-container {
@@ -16,4 +17,21 @@
   display: flex;
   justify-content: center;
   z-index: 10;
+}
+.dark .ql-toolbar {
+  background-color: #ea5957;
+}
+
+.dark .ql-container {
+  background: hsl(0, 0%, 12%);
+}
+
+.dark .ql-editor {
+  background: hsl(0, 0%, 17%);
+  color: white;
+  outline: 4px solid #ea5957;
+}
+
+.ql-formats > * {
+  color: red;
 }
