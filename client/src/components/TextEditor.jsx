@@ -48,22 +48,11 @@ const TextEditor = () => {
     navigator("/");
   };
 
-  const onRenameDoc = async (newDocName) => {
-    try {
-      // Send request to rename document
-      await axios.post(
-        `${import.meta.env.VITE_BACKEND_URL}${window.location.pathname}/rename`,
-        { docName: newDocName },
-      );
-
-      // Update docData state with new document name
-      setDocData((prevDocData) => ({
-        ...prevDocData,
-        docName: newDocName,
-      }));
-    } catch (error) {
-      console.error("Error renaming document:", error);
-    }
+  const onRenameDoc = async (docName) => {
+    await axios.post(
+      `${import.meta.env.VITE_BACKEND_URL}${window.location.pathname}/rename`,
+      { docName },
+    );
   };
 
   // setting up quill editor
