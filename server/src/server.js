@@ -18,10 +18,6 @@ mongoose.connect(DB_PASSWORD)
 
 const port = 3000
 
-app.get("/", (req, res) => {
-  res.send("Hello World!")
-})
-
 // route create new document
 // creating a uuid and sending it
 app.get("/createDocumentID", (req, res) => {
@@ -107,6 +103,20 @@ app.delete("/:docId/delete", async (req, res) => {
     const doc = await Document.deleteOne({ _id: docId }).exec()
     res.send({ acknowledged: doc?.acknowledged })
     // console.log({ doc });
+  } catch (err) {
+    console.error(err)
+    res.sendStatus(501)
+  }
+})
+
+// route to get all document ids and name
+app.get("/", async (req, res) => {
+  try {
+    const docs = await Document.find({}).exec()
+    const docData = docs.map((doc) => {
+      return { docId: doc._id, docName: doc.name }
+    })
+    res.send({ docData })
   } catch (err) {
     console.error(err)
     res.sendStatus(501)
