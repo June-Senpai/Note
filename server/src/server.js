@@ -102,7 +102,6 @@ app.delete("/:docId/delete", async (req, res) => {
     const { docId } = req.params
     const doc = await Document.deleteOne({ _id: docId }).exec()
     res.send({ acknowledged: doc?.acknowledged })
-    // console.log({ doc });
   } catch (err) {
     console.error(err)
     res.sendStatus(501)

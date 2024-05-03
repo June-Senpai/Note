@@ -37,7 +37,6 @@ const HomePage = () => {
       });
   };
 
-  console.log(docData);
   return (
     <main className=" flex flex-col items-center gap-12 bg-white pb-4 pt-8 dark:bg-[#323335]">
       <h1 className=" text-center text-6xl font-extrabold leading-normal text-[#0b1025] dark:text-white">
