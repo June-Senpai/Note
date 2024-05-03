@@ -39,7 +39,7 @@ const HomePage = () => {
 
   console.log(docData);
   return (
-    <div className="flex h-screen flex-col items-center justify-center gap-12 bg-red-500">
+    <div className="flex h-screen flex-col items-center justify-center gap-12 bg-white dark:bg-black">
       Homepage
       <button onClick={handleCreateDoc} className="border-2 p-4">
         Create
