@@ -64,12 +64,49 @@ app.post("/:docId", async (req, res) => {
       await new Document({
         _id: docId,
         data: deltaData,
+        name: "Untitled",
       }).save()
     } else {
       doc.data = deltaData
       await doc.save()
     }
     res.sendStatus(204)
+  } catch (err) {
+    console.error(err)
+    res.sendStatus(501)
+  }
+})
+
+//rename document
+app.post("/:docId/rename", async (req, res) => {
+  try {
+    const { docId } = req.params
+    const { docName } = req.body
+    const doc = await Document.findOne({ _id: docId }).exec()
+    if (!doc) {
+      await new Document({
+        _id: docId,
+        data: new Delta(),
+        name: docName,
+      }).save()
+    } else {
+      doc.name = docName
+      await doc.save()
+    }
+    res.sendStatus(204)
+  } catch (err) {
+    console.error(err)
+    res.sendStatus(501)
+  }
+})
+
+// delete document
+app.delete("/:docId/delete", async (req, res) => {
+  try {
+    const { docId } = req.params
+    const doc = await Document.deleteOne({ _id: docId }).exec()
+    res.send({ acknowledged: doc?.acknowledged })
+    // console.log({ doc });
   } catch (err) {
     console.error(err)
     res.sendStatus(501)
